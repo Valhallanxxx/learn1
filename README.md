@@ -8,5 +8,10 @@ app_file: drug_app.py
 pinned: false
 ---
 
-This Space runs a Gradio app for Drug Classification.
-Model + metrics are updated automatically via GitHub CI/CD.
+# Drug Classification (CI/CD Demo)
+
+This Space hosts the Gradio web app deployed automatically using GitHub Actions.
+
+- Model is updated from GitHub CI
+- Metrics generated via CML
+- app runs using `drug_app.py`
