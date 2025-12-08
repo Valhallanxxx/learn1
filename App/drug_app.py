@@ -51,9 +51,9 @@ demo = gr.Interface(
     examples=examples,
     title=title,
     description=description,
-    article=article,
-    theme=gr.themes.Soft(),
+    article=article
 )
+
 
 if __name__ == "__main__":
     demo.launch()
