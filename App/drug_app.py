@@ -1,8 +1,15 @@
 import gradio as gr
 import skops.io as sio
 
-# Load pipeline (make sure this path/file exists in your Model folder)
-pipe = sio.load("./Model/drug_pipeline.skops", trusted=True)
+MODEL_PATH = "./Model/drug_pipeline.skops"
+
+# Get list of untrusted types from the file (skops security requirement)
+unknown_types = sio.get_untrusted_types(file=MODEL_PATH)
+
+# We trust this file because it comes from our own CI pipeline,
+# so we pass those types explicitly to `trusted`.
+pipe = sio.load(MODEL_PATH, trusted=unknown_types)
+
 
 
 def predict_drug(age, sex, blood_pressure, cholesterol, na_to_k_ratio):
