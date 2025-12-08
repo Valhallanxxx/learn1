@@ -27,13 +27,39 @@ update-branch:
 hf-login:
 	git pull origin update
 	git switch update
-	pip install -U "huggingface_hub[cli]"
-	python -m huggingface_hub.commands.huggingface_cli login --token $(HF) --add-to-git-credential
+	pip install -U "huggingface_hub>=1.0.0"
 
 push-hub:
-	python -m huggingface_hub.commands.huggingface_cli upload Valhallan/learn1 ./App --repo-type=space --commit-message="Sync App files"
-	python -m huggingface_hub.commands.huggingface_cli upload Valhallan/learn1 ./Model /Model --repo-type=space --commit-message="Sync Model"
-	python -m huggingface_hub.commands.huggingface_cli upload Valhallan/learn1 ./Results /Metrics --repo-type=space --commit-message="Sync Metrics"
+	python - << 'EOF'
+	import os
+	from huggingface_hub import HfApi
+
+	token = os.environ["HF"]
+	api = HfApi(token=token)
+	space_id = "Valhallan/learn1"
+
+	# Upload Gradio app (App folder goes to Space root)
+	api.upload_folder(
+	    folder_path="App",
+	    repo_id=space_id,
+	    repo_type="space",
+	)
+
+	# Upload model files to /Model in the Space
+	api.upload_folder(
+	    folder_path="Model",
+	    repo_id=space_id,
+	    repo_type="space",
+	    path_in_repo="Model",
+	)
+
+	# Upload results/metrics to /Metrics in the Space
+	api.upload_folder(
+	    folder_path="Results",
+	    repo_id=space_id,
+	    repo_type="space",
+	    path_in_repo="Metrics",
+	)
+	EOF
 
 deploy: hf-login push-hub
-
