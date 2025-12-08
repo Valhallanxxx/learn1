@@ -1,8 +1,15 @@
-title: Learn1
-emoji: 🐢
-colorFrom: pink
-colorTo: pink
+---
+title: Drug Classification
+emoji: 💊
+colorFrom: indigo
+colorTo: cyan
 sdk: gradio
-sdk_version: 6.0.2
-app_file: app.py
+app_file: drug_app.py
 pinned: false
+---
+
+Drug classification demo Space for CI/CD with GitHub Actions.
+
+This Space runs a Gradio app from `drug_app.py` and uses a scikit-learn
+pipeline saved in `Model/drug_pipeline.skops`. The model and metrics are
+updated automatically from the GitHub repository via CI/CD.

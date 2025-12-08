@@ -1,2 +1,5 @@
-scikit-learn
+gradio
 skops
+scikit-learn
+numpy
+pandas
