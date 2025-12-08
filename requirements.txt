@@ -6,4 +6,4 @@ jupyter
 joblib
 black
 skops
-
+huggingface_hub
