@@ -2,7 +2,7 @@
 title: Drug Classification
 emoji: 💊
 colorFrom: indigo
-colorTo: cyan
+colorTo: purple
 sdk: gradio
 app_file: drug_app.py
 pinned: false
