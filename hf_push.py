@@ -1,6 +1,7 @@
 import os
 from huggingface_hub import HfApi
 
+
 def main():
     # Read token from environment variable HF (cd.yml passes this)
     token = os.environ["HF"]
@@ -30,6 +31,7 @@ def main():
         repo_type="space",
         path_in_repo="Metrics",
     )
+
 
 if __name__ == "__main__":
     main()

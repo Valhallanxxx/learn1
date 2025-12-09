@@ -5,7 +5,7 @@ drug_df = drug_df.sample(frac=1)
 drug_df.head(3)
 
 
-#------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 
 
 from sklearn.model_selection import train_test_split
@@ -18,8 +18,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 )
 
 
-#------------------------------------------------------------------------------------------
-
+# ------------------------------------------------------------------------------------------
 
 
 from sklearn.compose import ColumnTransformer
@@ -28,8 +27,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import OrdinalEncoder, StandardScaler
 
-cat_col = [1,2,3]
-num_col = [0,4]
+cat_col = [1, 2, 3]
+num_col = [0, 4]
 
 transform = ColumnTransformer(
     [
@@ -47,7 +46,7 @@ pipe = Pipeline(
 pipe.fit(X_train, y_train)
 
 
-#------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 
 
 from sklearn.metrics import accuracy_score, f1_score
@@ -59,20 +58,19 @@ f1 = f1_score(y_test, predictions, average="macro")
 print("Accuracy:", str(round(accuracy, 2) * 100) + "%", "F1:", round(f1, 2))
 
 
-#------------------------------------------------------------------------------------------
-
+# ------------------------------------------------------------------------------------------
 
 
 with open("Results/metrics.txt", "w") as outfile:
     outfile.write(f"\nAccuracy = {accuracy}, F1 Score = {f1:.2f}.")
 
 
-#------------------------------------------------------------------------------------------
-
+# ------------------------------------------------------------------------------------------
 
 
 import matplotlib
-matplotlib.use('Agg')
+
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix
 
@@ -82,7 +80,7 @@ disp.plot()
 plt.savefig("Results/model_results.png", dpi=120)
 
 
-#------------------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------------------
 
 
 import skops.io as sio
