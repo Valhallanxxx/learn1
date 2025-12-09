@@ -37,7 +37,7 @@ examples = [
     [50, "M", "HIGH", "HIGH", 34],
 ]
 
-title = "Drug Classification"
+title = "Drug Classification App v2"
 description = "Enter the details to predict the Drug type."
 article = (
     "This app is part of a CI/CD for ML demo. "
